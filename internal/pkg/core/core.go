@@ -229,9 +229,8 @@ func New(logger *zap.Logger, options ...Option) (Mux, error) {
 	}
 
 	fmt.Println(color.Blue(_UI))
-	//	mux.engine.Static("/static", "templates")
-	// 提供静态文件：HTML, JS, CSS等
-	mux.engine.Static("/web", "C:/golangrepo/gin-bt-web/internal/pkg/core/public/") // 将/static映射到./static目录
+	//mux.engine.Static("/web", "C:/golangrepo/gin-bt-web/internal/pkg/core/ui/") // 将/static映射到./static目录
+	mux.engine.Static("/web", "ui/") // 将/static映射到./static目录
 	// 加载HTML模板
 	//mux.engine.LoadHTMLGlob("C:/golangrepo/gin-api-mono-new/internal/pkg/core/public/*")
 
