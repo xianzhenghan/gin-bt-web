@@ -18,17 +18,20 @@ import (
 var (
 	Q     = new(Query)
 	Admin *admin
+	Code  *code
 )
 
 func SetDefault(db *gorm.DB, opts ...gen.DOOption) {
 	*Q = *Use(db, opts...)
 	Admin = &Q.Admin
+	Code = &Q.Code
 }
 
 func Use(db *gorm.DB, opts ...gen.DOOption) *Query {
 	return &Query{
 		db:    db,
 		Admin: newAdmin(db, opts...),
+		Code:  newCode(db, opts...),
 	}
 }
 
@@ -36,6 +39,7 @@ type Query struct {
 	db *gorm.DB
 
 	Admin admin
+	Code  code
 }
 
 func (q *Query) Available() bool { return q.db != nil }
@@ -44,6 +48,7 @@ func (q *Query) clone(db *gorm.DB) *Query {
 	return &Query{
 		db:    db,
 		Admin: q.Admin.clone(db),
+		Code:  q.Code.clone(db),
 	}
 }
 
@@ -59,16 +64,19 @@ func (q *Query) ReplaceDB(db *gorm.DB) *Query {
 	return &Query{
 		db:    db,
 		Admin: q.Admin.replaceDB(db),
+		Code:  q.Code.replaceDB(db),
 	}
 }
 
 type queryCtx struct {
 	Admin *adminDo
+	Code  *codeDo
 }
 
 func (q *Query) WithContext(ctx context.Context) *queryCtx {
 	return &queryCtx{
 		Admin: q.Admin.WithContext(ctx),
+		Code:  q.Code.WithContext(ctx),
 	}
 }
 

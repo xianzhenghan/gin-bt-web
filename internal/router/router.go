@@ -2,6 +2,7 @@ package router
 
 import (
 	"gin-api-mono/internal/api/admin"
+	"gin-api-mono/internal/api/code"
 	"gin-api-mono/internal/pkg/core"
 	"gin-api-mono/internal/repository/mysql"
 
@@ -33,6 +34,6 @@ func NewHTTPMux(logger *zap.Logger, db mysql.Repo) (core.Mux, error) {
 
 	// 注册路由
 	admin.RegisterGeneratedAdminRoutes(logger, db, generatedRouterGroup)
-
+	code.RegisterGeneratedCodeRoutes(logger, db, generatedRouterGroup)
 	return mux, nil
 }
