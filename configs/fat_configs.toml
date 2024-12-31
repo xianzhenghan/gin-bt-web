@@ -4,25 +4,14 @@ local = 'zh-cn'
 [mysql.read]
 addr = '127.0.0.1:3306'
 name = 'gin_api_mono'
-pass = '123456789'
+pass = '123456'
 user = 'root'
 
 [mysql.write]
 addr = '127.0.0.1:3306'
 name = 'gin_api_mono'
-pass = '123456789'
+pass = '123456'
 user = 'root'
-
-[redis]
-addr = "127.0.0.1:6379"
-pass = ""
-db = "0"
-
-[mongo]
-uri = "mongodb://127.0.0.1:27017"
-username = ""
-password = ""
-authSource = ""
 
 [jwt]
 secret = "i1ydX9RtHyuJTrw7frcu"

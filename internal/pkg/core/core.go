@@ -229,7 +229,19 @@ func New(logger *zap.Logger, options ...Option) (Mux, error) {
 	}
 
 	fmt.Println(color.Blue(_UI))
+	//	mux.engine.Static("/static", "templates")
+	// 提供静态文件：HTML, JS, CSS等
+	mux.engine.Static("/web", "C:/golangrepo/gin-bt-web/internal/pkg/core/public/") // 将/static映射到./static目录
+	// 加载HTML模板
+	//mux.engine.LoadHTMLGlob("C:/golangrepo/gin-api-mono-new/internal/pkg/core/public/*")
 
+	// 定义GET请求的路由规则，当访问根路径时执行
+	/*	mux.engine.GET("/", func(c *gin.Context) {
+				// 渲染index.html模板
+				c.HTML(200, "login.html", nil)
+			})
+		*
+	*/
 	// withoutTracePaths 这些请求，默认不记录日志
 	withoutTracePaths := map[string]bool{
 		"/metrics": true,
