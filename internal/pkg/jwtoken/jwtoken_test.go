@@ -29,12 +29,12 @@ func TestSign(t *testing.T) {
 }
 
 func TestParse(t *testing.T) {
-	tokenString := "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAwMSwidXNlcm5hbWUiOiJnaW4tYXBpLW1vbm8iLCJuaWNrbmFtZSI6Im1vbm8iLCJleHAiOjE3MDQ3ODY3NDcsIm5iZiI6MTcwNDcwMDM0NywiaWF0IjoxNzA0NzAwMzQ3fQ.22pCSb-aSv4BvaYnw3anryMrCpAY2I7zidkCZseWxcQ"
+	tokenString := "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAwMSwidXNlcm5hbWUiOiJnaW4tYXBpLW1vbm8iLCJuaWNrbmFtZSI6Im1vbm8iLCJleHAiOjE3MzU4NjgwNTAsIm5iZiI6MTczNTc4MTY1MCwiaWF0IjoxNzM1NzgxNjUwfQ.wu9FHJUmgifsQVwAO9nqvyenywM6kKXiX6lsQqfxn3I"
 	jwtInfo, err := New(secret).Parse(tokenString)
 	if err != nil {
 		t.Error("parse error", err)
 		return
 	}
 
-	t.Log(jwtInfo)
+	t.Log(string(jwtInfo.Marshal()))
 }
