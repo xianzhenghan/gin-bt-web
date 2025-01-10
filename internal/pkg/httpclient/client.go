@@ -1,8 +1,8 @@
 package httpclient
 
 import (
-	"gin-api-mono/internal/pkg/core"
-	"gin-api-mono/internal/pkg/trace"
+	"bt-web-ide/internal/pkg/core"
+	"bt-web-ide/internal/pkg/trace"
 
 	"github.com/go-resty/resty/v2"
 )

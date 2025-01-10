@@ -1,7 +1,7 @@
 package core
 
 import (
-	"gin-api-mono/internal/pkg/errors"
+	"bt-web-ide/internal/pkg/errors"
 )
 
 var _ BusinessError = (*businessError)(nil)

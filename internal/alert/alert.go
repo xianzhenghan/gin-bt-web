@@ -3,7 +3,7 @@ package alert
 import (
 	"fmt"
 
-	"gin-api-mono/internal/proposal"
+	"bt-web-ide/internal/proposal"
 )
 
 func NotifyHandler() func(msg *proposal.AlertMessage) {

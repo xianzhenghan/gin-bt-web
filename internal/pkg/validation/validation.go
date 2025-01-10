@@ -3,7 +3,7 @@ package validation
 import (
 	"fmt"
 
-	"gin-api-mono/configs"
+	"bt-web-ide/configs"
 
 	"github.com/gin-gonic/gin/binding"
 	"github.com/go-playground/locales/en"

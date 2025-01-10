@@ -3,7 +3,7 @@ package code
 import (
 	_ "embed"
 
-	"gin-api-mono/configs"
+	"bt-web-ide/configs"
 )
 
 //go:embed code.go

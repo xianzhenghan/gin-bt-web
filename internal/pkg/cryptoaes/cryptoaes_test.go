@@ -7,7 +7,7 @@ const (
 )
 
 func TestEncrypt2(t *testing.T) {
-	t.Log(Encrypt(key, "gin-api-mono"))
+	t.Log(Encrypt(key, "bt-web-ide"))
 }
 
 func TestDecrypt(t *testing.T) {

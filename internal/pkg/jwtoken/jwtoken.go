@@ -3,7 +3,7 @@ package jwtoken
 import (
 	"time"
 
-	"gin-api-mono/internal/proposal"
+	"bt-web-ide/internal/proposal"
 
 	"github.com/golang-jwt/jwt/v5"
 )

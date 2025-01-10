@@ -9,10 +9,10 @@ import (
 	"sync"
 	"time"
 
-	"gin-api-mono/configs"
-	"gin-api-mono/internal/pkg/core"
-	"gin-api-mono/internal/pkg/timeutil"
-	"gin-api-mono/internal/pkg/trace"
+	"bt-web-ide/configs"
+	"bt-web-ide/internal/pkg/core"
+	"bt-web-ide/internal/pkg/timeutil"
+	"bt-web-ide/internal/pkg/trace"
 
 	redisV8 "github.com/go-redis/redis/v8"
 )

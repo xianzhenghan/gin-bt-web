@@ -3,9 +3,9 @@ package mysql
 import (
 	"time"
 
-	"gin-api-mono/internal/pkg/core"
-	"gin-api-mono/internal/pkg/timeutil"
-	"gin-api-mono/internal/pkg/trace"
+	"bt-web-ide/internal/pkg/core"
+	"bt-web-ide/internal/pkg/timeutil"
+	"bt-web-ide/internal/pkg/trace"
 
 	"gorm.io/gorm"
 	"gorm.io/gorm/utils"

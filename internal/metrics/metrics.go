@@ -1,7 +1,7 @@
 package metrics
 
 import (
-	"gin-api-mono/internal/proposal"
+	"bt-web-ide/internal/proposal"
 )
 
 // RecordHandler 指标处理

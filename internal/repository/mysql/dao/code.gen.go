@@ -16,7 +16,7 @@ import (
 
 	"gorm.io/plugin/dbresolver"
 
-	"gin-api-mono/internal/repository/mysql/model"
+	"bt-web-ide/internal/repository/mysql/model"
 )
 
 func newCode(db *gorm.DB, opts ...gen.DOOption) code {

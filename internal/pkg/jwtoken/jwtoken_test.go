@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"gin-api-mono/internal/proposal"
+	"bt-web-ide/internal/proposal"
 )
 
 const secret = "i1ydX9RtHyuJTrw7frcu"
@@ -13,7 +13,7 @@ const secret = "i1ydX9RtHyuJTrw7frcu"
 func TestSign(t *testing.T) {
 	sessionUserInfo := proposal.SessionUserInfo{
 		Id:       1001,
-		UserName: "gin-api-mono",
+		UserName: "bt-web-ide",
 		NickName: "mono",
 	}
 

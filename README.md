@@ -1,6 +1,6 @@
 ## 关于
 
-`gin-api-mono` 是基于 [go-gin-api](https://github.com/xinliangnote/go-gin-api) 的删减版（仅提供 API 接口，去掉了界面），便于大家快速上手，示例中仅提供了对 MySQL 表的增删改查。
+`bt-web-ide` 是基于 [go-gin-api](https://github.com/xinliangnote/go-gin-api) 的删减版（仅提供 API 接口，去掉了界面），便于大家快速上手，示例中仅提供了对 MySQL 表的增删改查。
 
 运行文档：https://xiaobot.net/post/cfb713f6-75e0-432a-90cf-492b42afebd4
 

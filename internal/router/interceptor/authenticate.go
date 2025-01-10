@@ -3,7 +3,7 @@ package interceptor
 import (
 	"net/http"
 
-	"gin-api-mono/internal/pkg/core"
+	"bt-web-ide/internal/pkg/core"
 )
 
 func (i *interceptor) Authenticate() core.HandlerFunc {

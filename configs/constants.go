@@ -2,7 +2,7 @@ package configs
 
 const (
 	// ProjectName 项目名称
-	ProjectName = "gin-api-mono"
+	ProjectName = "bt-web-ide"
 
 	// ProjectPort 项目端口
 	ProjectPort = ":9999"

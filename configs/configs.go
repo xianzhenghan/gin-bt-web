@@ -5,7 +5,7 @@ import (
 	_ "embed"
 	"io"
 
-	"gin-api-mono/internal/pkg/env"
+	"bt-web-ide/internal/pkg/env"
 
 	"github.com/spf13/viper"
 )

@@ -43,7 +43,7 @@ dzRc2cWCabOJX/skT2vKwAzGPaJN3tRhwLxLnVnSv5mrnoMq/0FG2fJ4kSjXcjwt
 )
 
 func TestPublicKeyEncrypt(t *testing.T) {
-	plaintext := "gin-api-mono"
+	plaintext := "bt-web-ide"
 	t.Log(PublicKeyEncrypt(publicKey, plaintext))
 }
 

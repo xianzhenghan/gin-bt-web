@@ -3,7 +3,7 @@ package trace
 import (
 	"sync"
 
-	"gin-api-mono/internal/pkg/idgen"
+	"bt-web-ide/internal/pkg/idgen"
 )
 
 const Header = "TRACE-ID"

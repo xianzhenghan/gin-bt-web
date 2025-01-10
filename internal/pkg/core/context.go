@@ -12,8 +12,8 @@ import (
 	"strings"
 	"sync"
 
-	"gin-api-mono/internal/pkg/trace"
-	"gin-api-mono/internal/proposal"
+	"bt-web-ide/internal/pkg/trace"
+	"bt-web-ide/internal/proposal"
 
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/binding"

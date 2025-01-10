@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"time"
 
-	"gin-api-mono/configs"
-	"gin-api-mono/internal/pkg/errors"
+	"bt-web-ide/configs"
+	"bt-web-ide/internal/pkg/errors"
 
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"

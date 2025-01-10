@@ -32,7 +32,7 @@ definitions:
     type: object
 info:
   contact: {}
-  title: gin-api-mono 接口文档
+  title: bt-web-ide 接口文档
   version: v0.0.1
 paths:
   /api/admin:

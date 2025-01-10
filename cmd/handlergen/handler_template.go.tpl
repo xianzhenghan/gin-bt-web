@@ -4,11 +4,11 @@ import (
 	"net/http"
 	"strconv"
 
-	"gin-api-mono/internal/code"
-	"gin-api-mono/internal/pkg/core"
-	"gin-api-mono/internal/repository/mysql"
-	"gin-api-mono/internal/repository/mysql/dao"
-	"gin-api-mono/internal/repository/mysql/model"
+	"bt-web-ide/internal/code"
+	"bt-web-ide/internal/pkg/core"
+	"bt-web-ide/internal/repository/mysql"
+	"bt-web-ide/internal/repository/mysql/dao"
+	"bt-web-ide/internal/repository/mysql/model"
 
 	"go.uber.org/zap"
 	"gorm.io/gorm"

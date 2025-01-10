@@ -1,4 +1,4 @@
-module gin-api-mono
+module bt-web-ide
 
 go 1.19
 

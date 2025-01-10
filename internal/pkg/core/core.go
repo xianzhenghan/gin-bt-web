@@ -7,16 +7,16 @@ import (
 	"runtime/debug"
 	"time"
 
-	"gin-api-mono/configs"
-	_ "gin-api-mono/docs"
-	"gin-api-mono/internal/code"
-	"gin-api-mono/internal/pkg/color"
-	"gin-api-mono/internal/pkg/cors"
-	"gin-api-mono/internal/pkg/env"
-	"gin-api-mono/internal/pkg/errors"
-	"gin-api-mono/internal/pkg/timeutil"
-	"gin-api-mono/internal/pkg/trace"
-	"gin-api-mono/internal/proposal"
+	"bt-web-ide/configs"
+	_ "bt-web-ide/docs"
+	"bt-web-ide/internal/code"
+	"bt-web-ide/internal/pkg/color"
+	"bt-web-ide/internal/pkg/cors"
+	"bt-web-ide/internal/pkg/env"
+	"bt-web-ide/internal/pkg/errors"
+	"bt-web-ide/internal/pkg/timeutil"
+	"bt-web-ide/internal/pkg/trace"
+	"bt-web-ide/internal/proposal"
 
 	"github.com/gin-contrib/pprof"
 	"github.com/gin-gonic/gin"
@@ -27,7 +27,7 @@ import (
 	"go.uber.org/zap"
 )
 
-// see https://patorjk.com/software/taag/#p=testall&f=Graffiti&t=gin-api-mono
+// see https://patorjk.com/software/taag/#p=testall&f=Graffiti&t=bt-web-ide
 const _UI = `
  ██████╗ ██╗███╗   ██╗       █████╗ ██████╗ ██╗      ███╗   ███╗ ██████╗ ███╗   ██╗ ██████╗ 
 ██╔════╝ ██║████╗  ██║      ██╔══██╗██╔══██╗██║      ████╗ ████║██╔═══██╗████╗  ██║██╔═══██╗
@@ -232,7 +232,7 @@ func New(logger *zap.Logger, options ...Option) (Mux, error) {
 	//mux.engine.Static("/web", "C:/golangrepo/gin-bt-web/internal/pkg/core/ui/") // 将/static映射到./static目录
 	mux.engine.Static("/ui", "ui/") // 将/static映射到./static目录
 	// 加载HTML模板
-	//mux.engine.LoadHTMLGlob("C:/golangrepo/gin-api-mono-new/internal/pkg/core/public/*")
+	//mux.engine.LoadHTMLGlob("C:/golangrepo/bt-web-ide-new/internal/pkg/core/public/*")
 
 	// 定义GET请求的路由规则，当访问根路径时执行
 	/*	mux.engine.GET("/", func(c *gin.Context) {

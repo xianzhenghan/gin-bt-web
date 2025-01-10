@@ -15,7 +15,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"gin-api-mono/internal/pkg/errors"
+	"bt-web-ide/internal/pkg/errors"
 
 	"go.uber.org/zap"
 	"golang.org/x/tools/go/packages"

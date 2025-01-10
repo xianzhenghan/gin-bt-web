@@ -4,11 +4,11 @@ import (
 	"fmt"
 	"net/http"
 
-	"gin-api-mono/configs"
-	"gin-api-mono/internal/code"
-	"gin-api-mono/internal/pkg/core"
-	"gin-api-mono/internal/pkg/jwtoken"
-	"gin-api-mono/internal/proposal"
+	"bt-web-ide/configs"
+	"bt-web-ide/internal/code"
+	"bt-web-ide/internal/pkg/core"
+	"bt-web-ide/internal/pkg/jwtoken"
+	"bt-web-ide/internal/proposal"
 )
 
 func (i *interceptor) JWTokenAuthVerify(ctx core.Context) (sessionUserInfo proposal.SessionUserInfo, err core.BusinessError) {

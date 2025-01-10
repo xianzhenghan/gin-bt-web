@@ -1,8 +1,8 @@
 package {{.PackageName}}
 
 import (
-	"gin-api-mono/internal/pkg/core"
-	"gin-api-mono/internal/repository/mysql"
+	"bt-web-ide/internal/pkg/core"
+	"bt-web-ide/internal/repository/mysql"
 
 	"go.uber.org/zap"
 )

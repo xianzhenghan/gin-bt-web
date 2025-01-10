@@ -1,10 +1,10 @@
 package router
 
 import (
-	"gin-api-mono/internal/api/admin"
-	"gin-api-mono/internal/api/code"
-	"gin-api-mono/internal/pkg/core"
-	"gin-api-mono/internal/repository/mysql"
+	"bt-web-ide/internal/api/admin"
+	"bt-web-ide/internal/api/code"
+	"bt-web-ide/internal/pkg/core"
+	"bt-web-ide/internal/repository/mysql"
 
 	"github.com/pkg/errors"
 	"go.uber.org/zap"

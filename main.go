@@ -5,18 +5,18 @@ import (
 	"fmt"
 	"net/http"
 
-	"gin-api-mono/configs"
-	"gin-api-mono/internal/pkg/env"
-	"gin-api-mono/internal/pkg/logger"
-	"gin-api-mono/internal/pkg/shutdown"
-	"gin-api-mono/internal/pkg/timeutil"
-	"gin-api-mono/internal/repository/mysql"
-	"gin-api-mono/internal/router"
+	"bt-web-ide/configs"
+	"bt-web-ide/internal/pkg/env"
+	"bt-web-ide/internal/pkg/logger"
+	"bt-web-ide/internal/pkg/shutdown"
+	"bt-web-ide/internal/pkg/timeutil"
+	"bt-web-ide/internal/repository/mysql"
+	"bt-web-ide/internal/router"
 
 	"go.uber.org/zap"
 )
 
-// @title gin-api-mono 接口文档
+// @title bt-web-ide 接口文档
 // @version v0.0.1
 
 // @BasePath /
