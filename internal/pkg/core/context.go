@@ -95,6 +95,9 @@ type Context interface {
 	Payload(payload interface{})
 	getPayload() interface{}
 
+	// Payload 正确返回
+	PayloadWithCode(payload interface{}, code string, message string)
+
 	// File 文件下载
 	File(filePath string)
 
@@ -250,6 +253,19 @@ func (c *context) getPayload() interface{} {
 		return payload
 	}
 	return nil
+}
+
+func (c *context) PayloadWithCode(payload interface{}, code string, message string) {
+	data := struct {
+		Data    interface{} `json:"data"`
+		Code    string      `json:"code"`
+		Message string      `json:"message"`
+	}{
+		Data:    payload,
+		Code:    code,
+		Message: message,
+	}
+	c.ctx.Set(_PayloadName, data)
 }
 
 func (c *context) Payload(payload interface{}) {

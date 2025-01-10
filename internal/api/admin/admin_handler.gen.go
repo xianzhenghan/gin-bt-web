@@ -1,8 +1,12 @@
 package admin
 
 import (
+	"bt-web-ide/configs"
+	"bt-web-ide/internal/pkg/jwtoken"
+	"bt-web-ide/internal/proposal"
 	"net/http"
 	"strconv"
+	"time"
 
 	"bt-web-ide/internal/code"
 	"bt-web-ide/internal/pkg/core"
@@ -18,6 +22,11 @@ type handler struct {
 	logger  *zap.Logger
 	writeDB *dao.Query
 	readDB  *dao.Query
+}
+
+type Login struct {
+	Username string `json:"username"`
+	Password string `json:"password"`
 }
 
 type genResultInfo struct {
@@ -260,5 +269,43 @@ func (h *handler) UpdateByID() core.HandlerFunc {
 		resultInfo.Error = result.Error
 
 		ctx.Payload(resultInfo)
+	}
+}
+
+func (h *handler) Login() core.HandlerFunc {
+	return func(ctx core.Context) {
+		var loginData Login
+		if err := ctx.ShouldBindJSON(&loginData); err != nil {
+			ctx.AbortWithError(core.Error(
+				http.StatusBadRequest,
+				code.ParamBindError,
+				err.Error()),
+			)
+			return
+		}
+		if loginData.Username == "" || loginData.Password == "" {
+			ctx.AbortWithError(core.Error(
+				http.StatusBadRequest,
+				code.ParamBindError,
+				"password or username or password is empty",
+			))
+			return
+		}
+
+		sessionUserInfo := proposal.SessionUserInfo{
+			UserName: loginData.Username,
+			PassWord: loginData.Password,
+		}
+		tokenString, err := jwtoken.New(configs.Get().JWT.Secret).Sign(sessionUserInfo, 24*time.Hour)
+
+		if err != nil {
+			ctx.AbortWithError(core.Error(
+				http.StatusBadRequest,
+				code.ParamBindError,
+				err.Error()),
+			)
+			return
+		}
+		ctx.PayloadWithCode(tokenString, "00000", "success")
 	}
 }

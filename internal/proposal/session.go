@@ -7,6 +7,7 @@ type SessionUserInfo struct {
 	Id       int32  `json:"id"`       // ID
 	UserName string `json:"username"` // 用户名
 	NickName string `json:"nickname"` // 昵称
+	PassWord string `json:"password"` // 昵称
 }
 
 // Marshal 序列化到JSON

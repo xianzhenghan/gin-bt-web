@@ -24,4 +24,8 @@ func RegisterGeneratedAdminRoutes(logger *zap.Logger, db mysql.Repo, r core.Rout
 
 	// 根据 ID 删除数据
 	r.DELETE("/admin/:id", h.DeleteByID())
+
+	r.POST("/admin/login", h.Login())
+
+	r.POST("/admin/login", h.Login())
 }

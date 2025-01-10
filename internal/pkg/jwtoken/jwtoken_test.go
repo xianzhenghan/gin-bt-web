@@ -12,7 +12,7 @@ const secret = "i1ydX9RtHyuJTrw7frcu"
 
 func TestSign(t *testing.T) {
 	sessionUserInfo := proposal.SessionUserInfo{
-		Id:       1001,
+		//Id:       1001,
 		UserName: "bt-web-ide",
 		NickName: "mono",
 	}
