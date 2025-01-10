@@ -27,5 +27,5 @@ func RegisterGeneratedAdminRoutes(logger *zap.Logger, db mysql.Repo, r core.Rout
 
 	r.POST("/admin/login", h.Login())
 
-	r.POST("/admin/login", h.Login())
+	r.POST("/admin/register", h.Register())
 }

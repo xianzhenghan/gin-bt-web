@@ -3,6 +3,7 @@ package admin
 import (
 	"bt-web-ide/configs"
 	"bt-web-ide/internal/pkg/jwtoken"
+	"bt-web-ide/internal/pkg/password"
 	"bt-web-ide/internal/proposal"
 	"net/http"
 	"strconv"
@@ -27,6 +28,20 @@ type handler struct {
 type Login struct {
 	Username string `json:"username"`
 	Password string `json:"password"`
+}
+
+type Register struct {
+	Username string `json:"username"`
+	Password string `json:"password"`
+	Email    string `json:"email"`
+	Phone    string `json:"phone"`
+}
+
+type RegisterResponse struct {
+	Token     string   `json:"token"`
+	ExpireAt  int64    `json:"expire_at"`
+	TokenType string   `json:"token_type"`
+	User      Register `json:"user"`
 }
 
 type genResultInfo struct {
@@ -269,6 +284,68 @@ func (h *handler) UpdateByID() core.HandlerFunc {
 		resultInfo.Error = result.Error
 
 		ctx.Payload(resultInfo)
+	}
+}
+
+func (h *handler) Register() core.HandlerFunc {
+	return func(ctx core.Context) {
+		var registerData Register
+		if err := ctx.ShouldBindJSON(&registerData); err != nil {
+			ctx.AbortWithError(core.Error(
+				http.StatusBadRequest,
+				code.ParamBindError,
+				err.Error()),
+			)
+			return
+		}
+		if registerData.Username == "" || registerData.Password == "" {
+			ctx.AbortWithError(core.Error(
+				http.StatusBadRequest,
+				code.ParamBindError,
+				"password or username or password is empty",
+			))
+			return
+		}
+		var createData model.UsersRegistration
+		createData.Username = registerData.Username
+		createData.Email = registerData.Email
+		token := password.GenerateLoginToken(registerData.Username)
+		createData.PasswordHash = token
+		createData.PhoneNumber = registerData.Phone
+		if err := h.writeDB.UsersRegistration.WithContext(ctx.RequestContext()).Create(&createData); err != nil {
+			ctx.AbortWithError(core.Error(
+				http.StatusBadRequest,
+				code.ServerError,
+				err.Error()),
+			)
+			return
+		}
+		// return token
+
+		sessionUserInfo := proposal.SessionUserInfo{
+			UserName: registerData.Username,
+			PassWord: registerData.Password,
+		}
+		tokenString, err := jwtoken.New(configs.Get().JWT.Secret).Sign(sessionUserInfo, 24*time.Hour)
+		if err != nil {
+			ctx.AbortWithError(core.Error(
+				http.StatusBadRequest,
+				code.ParamBindError,
+				err.Error()),
+			)
+			return
+		}
+		r := RegisterResponse{
+			Token:     tokenString,
+			ExpireAt:  time.Now().Add(time.Hour * 24).Unix(),
+			TokenType: "Bearer",
+			User: Register{
+				Username: registerData.Username,
+				Password: registerData.Password,
+				Email:    registerData.Email,
+			},
+		}
+		ctx.PayloadWithCode(r, "00000", "success")
 	}
 }
 

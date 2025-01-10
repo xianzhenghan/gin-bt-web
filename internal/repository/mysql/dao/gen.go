@@ -16,39 +16,44 @@ import (
 )
 
 var (
-	Q     = new(Query)
-	Admin *admin
-	Code  *code
+	Q                 = new(Query)
+	Admin             *admin
+	Code              *code
+	UsersRegistration *usersRegistration
 )
 
 func SetDefault(db *gorm.DB, opts ...gen.DOOption) {
 	*Q = *Use(db, opts...)
 	Admin = &Q.Admin
 	Code = &Q.Code
+	UsersRegistration = &Q.UsersRegistration
 }
 
 func Use(db *gorm.DB, opts ...gen.DOOption) *Query {
 	return &Query{
-		db:    db,
-		Admin: newAdmin(db, opts...),
-		Code:  newCode(db, opts...),
+		db:                db,
+		Admin:             newAdmin(db, opts...),
+		Code:              newCode(db, opts...),
+		UsersRegistration: newUsersRegistration(db, opts...),
 	}
 }
 
 type Query struct {
 	db *gorm.DB
 
-	Admin admin
-	Code  code
+	Admin             admin
+	Code              code
+	UsersRegistration usersRegistration
 }
 
 func (q *Query) Available() bool { return q.db != nil }
 
 func (q *Query) clone(db *gorm.DB) *Query {
 	return &Query{
-		db:    db,
-		Admin: q.Admin.clone(db),
-		Code:  q.Code.clone(db),
+		db:                db,
+		Admin:             q.Admin.clone(db),
+		Code:              q.Code.clone(db),
+		UsersRegistration: q.UsersRegistration.clone(db),
 	}
 }
 
@@ -62,21 +67,24 @@ func (q *Query) WriteDB() *Query {
 
 func (q *Query) ReplaceDB(db *gorm.DB) *Query {
 	return &Query{
-		db:    db,
-		Admin: q.Admin.replaceDB(db),
-		Code:  q.Code.replaceDB(db),
+		db:                db,
+		Admin:             q.Admin.replaceDB(db),
+		Code:              q.Code.replaceDB(db),
+		UsersRegistration: q.UsersRegistration.replaceDB(db),
 	}
 }
 
 type queryCtx struct {
-	Admin *adminDo
-	Code  *codeDo
+	Admin             *adminDo
+	Code              *codeDo
+	UsersRegistration *usersRegistrationDo
 }
 
 func (q *Query) WithContext(ctx context.Context) *queryCtx {
 	return &queryCtx{
-		Admin: q.Admin.WithContext(ctx),
-		Code:  q.Code.WithContext(ctx),
+		Admin:             q.Admin.WithContext(ctx),
+		Code:              q.Code.WithContext(ctx),
+		UsersRegistration: q.UsersRegistration.WithContext(ctx),
 	}
 }
 
