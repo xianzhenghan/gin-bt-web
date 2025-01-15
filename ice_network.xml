@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE AdapterType SYSTEM "../data/Schemas/LibraryElement.dtd">
+<AdapterType GUID="4c74017b-3867-4612-94f8-6644f5ec3446" Name="Adapter1" Comment="Adapter Interface" Namespace="Main">
+  <Identification Standard="61499-1" />
+  <VersionInfo Organization="Schneider Electric" Version="0.0" Author="SESA801668" Date="1/14/2025" />
+  <InterfaceList>
+    <EventInputs>
+      <Event Name="REQ" Comment="Request from Socket">
+        <With Var="INPUT1" />
+        <With Var="INPUT2" />
+      </Event>
+      <Event Name="RSP" Comment="Response from Socket">
+        <With Var="INPUT2" />
+      </Event>
+    </EventInputs>
+    <EventOutputs>
+      <Event Name="CNF" Comment="Confirmation from Plug">
+        <With Var="CNFD" />
+      </Event>
+      <Event Name="IND" Comment="Indication from Plug">
+        <With Var="INDD" />
+      </Event>
+    </EventOutputs>
+    <InputVars>
+      <VarDeclaration Name="INPUT1" Type="INT" Comment="Request Data from Socket" />
+      <VarDeclaration Name="INPUT2" Type="STRING" Comment="Response Data from Socket" />
+    </InputVars>
+    <OutputVars>
+      <VarDeclaration Name="CNFD" Type="INT" Comment="Confirmation Data from Plug" />
+      <VarDeclaration Name="INDD" Type="INT" Comment="Indication Data from Plug" />
+    </OutputVars>
+  </InterfaceList>
+  <Service RightInterface="PLUG" LeftInterface="SOCKET">
+    <ServiceSequence Name="request_confirm">
+      <ServiceTransaction>
+        <InputPrimitive Interface="SOCKET" Event="REQ" Parameters="INPUT1" />
+        <OutputPrimitive Interface="PLUG" Event="REQ" Parameters="INPUT1" />
+      </ServiceTransaction>
+      <ServiceTransaction>
+        <InputPrimitive Interface="PLUG" Event="CNF" Parameters="CNFD" />
+        <OutputPrimitive Interface="SOCKET" Event="CNF" Parameters="CNFD" />
+      </ServiceTransaction>
+    </ServiceSequence>
+    <ServiceSequence Name="indication_response">
+      <ServiceTransaction>
+        <InputPrimitive Interface="PLUG" Event="IND" Parameters="INDD" />
+        <OutputPrimitive Interface="SOCKET" Event="IND" Parameters="INDD" />
+      </ServiceTransaction>
+      <ServiceTransaction>
+        <InputPrimitive Interface="SOCKET" Event="RSP" Parameters="INPUT2" />
+        <OutputPrimitive Interface="PLUG" Event="RSP" Parameters="INPUT2" />
+      </ServiceTransaction>
+    </ServiceSequence>
+  </Service>
+</AdapterType>
